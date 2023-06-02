@@ -1,0 +1,83 @@
+gsap.registerPlugin(Flip);
+const endboxNumber = 1;
+const container = document.querySelector(".container");
+const container2 = document.querySelector(".container2");
+const gigabox = document.querySelector(".gigabox");
+const boxAll = document.querySelectorAll(".boxAll");
+const endboxAll = document.querySelectorAll("endboxAll");
+const loading = document.querySelector(".loading-screen");
+let endbox = document.querySelector(".endbox" + endboxNumber);
+const endbox1 = document.querySelector(".endbox1");
+const endbox2 = document.querySelector(".endbox2");
+const endbox3 = document.querySelector(".endbox3");
+const endbox4 = document.querySelector(".endbox4");
+const endbox5 = document.querySelector(".endbox5");
+const box1 = document.querySelector(".box1");
+const box2 = document.querySelector(".box2");
+const box3 = document.querySelector(".box3");
+const box4 = document.querySelector(".box4");
+const box5 = document.querySelector(".box5");
+
+glop();
+function glop() {
+  let state1 = Flip.getState(".box1");
+  endbox1.appendChild(box1);
+  Flip.from(state1, {
+    duration: 0.8,
+    ease: "power1.out",
+    backgroundColor: "#E50914",
+    boxShadow: "0px 0px 20px red",
+  });
+  let state2 = Flip.getState(".box2");
+  endbox2.appendChild(box2);
+  Flip.from(state2, {
+    duration: 0.8,
+    ease: "power1.out",
+    delay: 0.4,
+    backgroundColor: "#E50914",
+    boxShadow: "0px 0px 20px red",
+  });
+  let state3 = Flip.getState(".box3");
+  endbox3.appendChild(box3);
+  Flip.from(state3, {
+    duration: 0.8,
+    ease: "power1.out",
+    delay: 0.8,
+    backgroundColor: "#E50914",
+    boxShadow: "0px 0px 20px red",
+  });
+  let state4 = Flip.getState(".box4");
+  endbox4.appendChild(box4);
+  Flip.from(state4, {
+    duration: 0.8,
+    ease: "power1.out",
+    delay: 1.2,
+    backgroundColor: "#E50914",
+    boxShadow: "0px 0px 20px red",
+  });
+  let state5 = Flip.getState(".box5");
+  endbox5.appendChild(box5);
+  Flip.from(state5, {
+    duration: 0.8,
+    ease: "power1.out",
+    delay: 1.6,
+    backgroundColor: "#E50914",
+    boxShadow: "0px 0px 20px red",
+  });
+  setTimeout(() => {
+    container.style.boxShadow = "0px 0px 2000px red";
+    container.style.border = "none";
+    // container2.style.opacity = "0";
+
+    // container.classList.add("reducedY");
+    // boxAll.forEach((element) => {
+    //   element.classList.add("reducedY");
+    // });
+  }, 2350);
+  setTimeout(() => {
+    gsap.to(loading, { duration: 0.6, scale: 0 });
+  }, 3500);
+  setTimeout(() => {
+    loading.classList.add("display-none");
+  }, 4100);
+}
