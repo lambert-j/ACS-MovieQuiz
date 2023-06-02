@@ -1,4 +1,5 @@
 gsap.registerPlugin(Flip);
+// Variables du Loading Screen
 const endboxNumber = 1;
 const container = document.querySelector(".container");
 const container2 = document.querySelector(".container2");
@@ -18,6 +19,7 @@ const box3 = document.querySelector(".box3");
 const box4 = document.querySelector(".box4");
 const box5 = document.querySelector(".box5");
 
+// Animation Loading Screen
 glop();
 function glop() {
   let state1 = Flip.getState(".box1");
@@ -67,12 +69,6 @@ function glop() {
   setTimeout(() => {
     container.style.boxShadow = "0px 0px 2000px red";
     container.style.border = "none";
-    // container2.style.opacity = "0";
-
-    // container.classList.add("reducedY");
-    // boxAll.forEach((element) => {
-    //   element.classList.add("reducedY");
-    // });
   }, 2350);
   setTimeout(() => {
     gsap.to(loading, { duration: 0.6, scale: 0 });
