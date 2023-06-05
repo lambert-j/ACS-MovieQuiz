@@ -18,7 +18,7 @@ const box2 = document.querySelector(".box2");
 const box3 = document.querySelector(".box3");
 const box4 = document.querySelector(".box4");
 const box5 = document.querySelector(".box5");
-
+let tl = gsap.timeline();
 // Animation Loading Screen
 glop();
 function glop() {
@@ -77,3 +77,4 @@ function glop() {
     loading.classList.add("display-none");
   }, 4100);
 }
+// FIN DU LOADING SCREEN
