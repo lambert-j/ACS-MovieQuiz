@@ -4,18 +4,15 @@ body {
   margin: 0px;
   padding: 0px;
   background-color: black;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
 
   #grain {
     background-image: url(/images/graingif.gif);
     z-index: 999;
     width: 100%;
     height: 100%;
-    position: absolute;
-    opacity: 0.05;
+    opacity: 0.04;
     pointer-events: none;
+    position: absolute;
   }
   .display-none {
     display: none;
@@ -26,7 +23,7 @@ body {
     position: absolute;
     overflow: hidden;
     background-color: black;
-    z-index: 99;
+    z-index: 99999;
 
     .gigaboxend {
       display: flex;
@@ -84,12 +81,32 @@ body {
   }
 
   // Fin Loading Screen
+
+  .hero {
+    height: 80vh;
+    width: 100vw;
+    background-image: url(/images/films/interstellar.jpg);
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+  }
+
+  .navigation {
+    align-items: center;
+
+    .logo {
+      margin-right: auto;
+    }
+    .howto {
+    }
+  }
+
   .swiper {
     width: 100%;
     height: 150px;
     .swiper-wrapper {
       .swiper-slide {
-        background-image: url(/images/films/image\ 3.png);
+        background-image: url(/images/films/apocalypse.jpg);
         background-repeat: no-repeat;
         background-size: cover;
       }

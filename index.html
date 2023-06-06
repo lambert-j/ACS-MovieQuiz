@@ -19,9 +19,10 @@
     <title>Movie Quiz</title>
   </head>
   <body>
-    <div id="grain"></div>
+
     <!-- Loading Screen -->
     <div class="loading-screen">
+          <div id="grain"></div>
       <div class="gigaboxend">
         <div class="endbox1 endboxAll"></div>
         <div class="endbox2 endboxAll"></div>
@@ -39,7 +40,50 @@
       </div>
     </div>
     <!-- Main Container -->
+
+          <div class="hero"></div>
     <div class="container">
+
+      <!-- NavBar -->
+      <div class="navigation d-flex mb-5">
+        <!-- <img src="/images/logo_moviequiz-mobile.png" class="logo"></img> -->
+        <!-- <div class="howto">?</div> -->
+        <nav class="navbar fixed-top">
+          <div class="container-fluid">
+            <img src="/images/logo_moviequiz-mobile.png" class="navbar-brand logo" href="#"></img>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Films</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Séries</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Tous les films et séries</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Comment jouer ?</a>
+                  </li>
+              
+                </ul>
+              
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
       <!-- Liste des Films A Trouver -->
       <div class="film-liste-container">
         <div class="film-liste liste-titles">Les Films - A trouver</div>

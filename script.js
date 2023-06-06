@@ -68,7 +68,7 @@ function glop() {
     container.style.border = "none";
   }, 2350);
   setTimeout(() => {
-    gsap.to(loading, { duration: 0.6, scale: 0 });
+    gsap.to(loading, { duration: 0.6, scale: 0, opacity: 0 });
   }, 3500);
   setTimeout(() => {
     loading.classList.add("display-none");
