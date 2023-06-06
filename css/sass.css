@@ -24,8 +24,9 @@ body .loading-screen {
   position: absolute;
   overflow: hidden;
   background-color: black;
+  z-index: 99;
 }
-body .loading-screen .container {
+body .loading-screen .gigaboxend {
   display: flex;
   position: absolute;
   border: 1px solid #e50914;
@@ -33,11 +34,11 @@ body .loading-screen .container {
   height: 5vh;
   transform: translate(25vw, 62.5vh);
 }
-body .loading-screen .container .boxAll {
+body .loading-screen .gigaboxend .boxAll {
   width: 10vw;
   height: 5vh;
 }
-body .loading-screen .container .endboxAll {
+body .loading-screen .gigaboxend .endboxAll {
   width: 10vw;
   height: 10vh;
 }
@@ -74,4 +75,22 @@ body .loading-screen .reducedY {
   100% {
     height: 0;
   }
+}
+body .swiper {
+  width: 100%;
+  height: 150px;
+}
+body .swiper .swiper-wrapper .swiper-slide {
+  background-image: url(/images/films/image\ 3.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body .swiper .swiper-button-prev,
+body .swiper .swiper-button-next {
+  --swiper-navigation-color: #e50914;
+  --swiper-navigation-size: 25px;
+}
+body .liste-titles {
+  font-size: 1.6rem;
+  color: white;
 }/*# sourceMappingURL=sass.css.map */

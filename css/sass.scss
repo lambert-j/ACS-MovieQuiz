@@ -1,3 +1,5 @@
+$typeRed: #e50914;
+
 body {
   margin: 0px;
   padding: 0px;
@@ -24,11 +26,12 @@ body {
     position: absolute;
     overflow: hidden;
     background-color: black;
+    z-index: 99;
 
-    .container {
+    .gigaboxend {
       display: flex;
       position: absolute;
-      border: 1px solid #e50914;
+      border: 1px solid $typeRed;
       width: 50vw;
       height: 5vh;
       transform: translate(calc((100vw - 50vw) / 2), calc((100vh + 25vh) / 2));
@@ -78,5 +81,28 @@ body {
         height: 0;
       }
     }
+  }
+
+  // Fin Loading Screen
+  .swiper {
+    width: 100%;
+    height: 150px;
+    .swiper-wrapper {
+      .swiper-slide {
+        background-image: url(/images/films/image\ 3.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      --swiper-navigation-color: #e50914;
+      --swiper-navigation-size: 25px;
+    }
+  }
+
+  .liste-titles {
+    font-size: 1.6rem;
+    color: white;
   }
 }

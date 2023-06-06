@@ -1,13 +1,11 @@
 gsap.registerPlugin(Flip);
 // Variables du Loading Screen
 const endboxNumber = 1;
-const container = document.querySelector(".container");
-const container2 = document.querySelector(".container2");
+const container = document.querySelector(".gigaboxend");
 const gigabox = document.querySelector(".gigabox");
 const boxAll = document.querySelectorAll(".boxAll");
 const endboxAll = document.querySelectorAll("endboxAll");
 const loading = document.querySelector(".loading-screen");
-let endbox = document.querySelector(".endbox" + endboxNumber);
 const endbox1 = document.querySelector(".endbox1");
 const endbox2 = document.querySelector(".endbox2");
 const endbox3 = document.querySelector(".endbox3");
@@ -18,7 +16,6 @@ const box2 = document.querySelector(".box2");
 const box3 = document.querySelector(".box3");
 const box4 = document.querySelector(".box4");
 const box5 = document.querySelector(".box5");
-let tl = gsap.timeline();
 // Animation Loading Screen
 glop();
 function glop() {
@@ -78,3 +75,32 @@ function glop() {
   }, 4100);
 }
 // FIN DU LOADING SCREEN
+// SWIPPER
+const swiper = new Swiper(".swiper", {
+  // Optional parameters
+  direction: "horizontal",
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 3,
+  breakpoints: {
+    768: {
+      slidesPerView: 4,
+    },
+    992: {
+      slidesPerView: 6,
+    },
+    1200: {
+      slidesPerView: 8,
+    },
+  },
+  // If we need pagination
+  pagination: {
+    el: ".swiper-pagination",
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
