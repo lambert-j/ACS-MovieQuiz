@@ -104,3 +104,40 @@ const swiper = new Swiper(".swiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelectorAll(".liste-film-found");
+    data.medias.movie.forEach((movie, index) => {
+      slides[index].id = movie.title.replace(/\s/g, "-");
+      slides[index].style.backgroundImage = `url(${movie.picture})`;
+    });
+  });
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelectorAll(".liste-film-notfound");
+    data.medias.movie.forEach((movie, index) => {
+      slides[index].id = movie.title.replace(/\s/g, "-");
+      slides[index].style.backgroundImage = `url(${movie.picture})`;
+    });
+  });
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelectorAll(".liste-serie-notfound");
+    data.medias.serie.forEach((serie, index) => {
+      slides[index].id = serie.title.replace(/\s/g, "-");
+      slides[index].style.backgroundImage = `url(${serie.picture})`;
+    });
+  });
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelectorAll(".liste-serie-found");
+    data.medias.serie.forEach((serie, index) => {
+      slides[index].id = serie.title.replace(/\s/g, "-");
+      slides[index].style.backgroundImage = `url(${serie.picture})`;
+    });
+  });
