@@ -64,6 +64,10 @@
       {
         "title": "The Truman Show",
         "picture": "/images/films/trueman.jpg"
+      },
+      {
+        "title": "John Wick",
+        "picture": "/images/films/wick.jpg"
       }
     ],
     "serie": [
