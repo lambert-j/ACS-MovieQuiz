@@ -19,10 +19,8 @@
     <title>Movie Quiz</title>
   </head>
   <body>
-
     <!-- Loading Screen -->
-    <div class="loading-screen">
-          <div id="grain"></div>
+    <div class="loading-screen display-none">
       <div class="gigaboxend">
         <div class="endbox1 endboxAll"></div>
         <div class="endbox2 endboxAll"></div>
@@ -41,44 +39,80 @@
     </div>
     <!-- Main Container -->
 
-          <div class="hero"></div>
+    <div class="hero">
+      <div class="main-text-box d-flex ms-2 mb-5 ms-lg-5">
+        <div class="main-title ">Interstellar</div>
+       <div class="btn-hero">
+        <div class="btn-annonce d-flex mt-2">
+          <img src="/images/Vector-annonce.svg" class="btn-annonce-logo"></img>
+          <div class="btn-annonce-text ms-2">Voir la bande annonce</div>
+        </div>
+        <div class="btn-info d-flex mt-2">
+          <img src="/images/Vector-info.svg" class="btn-info-logo"></img>
+          <div class="btn-info-text ms-2">Plus d'infos</div>
+        </div>
+      </div></div>
+      
+    </div>
     <div class="container">
-
       <!-- NavBar -->
       <div class="navigation d-flex mb-5">
         <!-- <img src="/images/logo_moviequiz-mobile.png" class="logo"></img> -->
         <!-- <div class="howto">?</div> -->
-        <nav class="navbar fixed-top">
+        <nav class="navbar fixed-top .navbar-light">
           <div class="container-fluid">
-            <img src="/images/logo_moviequiz-mobile.png" class="navbar-brand logo" href="#"></img>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+            <div class="navbar-brand logo ms-2 mt-2" href="#"></div>
+            <button
+              class="navbar-toggler me-2 nav-btn custom-toggler"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon nav-span custom-toggler"></span>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div
+              class="offcanvas offcanvas-end nav-tab"
+              tabindex="-1"
+              id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel"
+            >
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
               </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                    <a
+                      class="nav-link nav-tab-text"
+                      aria-current="page"
+                      href="#"
+                      >Accueil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Films</a>
+                    <a class="nav-link nav-tab-text" href="#">Films</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Séries</a>
+                    <a class="nav-link nav-tab-text" href="#">Séries</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Tous les films et séries</a>
+                    <a class="nav-link nav-tab-text" href="#"
+                      >Tous les films et séries</a
+                    >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Comment jouer ?</a>
+                    <a class="nav-link nav-tab-text" href="#"
+                      >Comment jouer ?</a
+                    >
                   </li>
-              
                 </ul>
-              
               </div>
             </div>
           </div>
@@ -86,27 +120,11 @@
       </div>
       <!-- Liste des Films A Trouver -->
       <div class="film-liste-container">
-        <div class="film-liste liste-titles">Les Films - A trouver</div>
-        <div class="swiper">
+        <div class="film-liste liste-titles">Les Films - Trouvés</div>
+        <div class="swiper swiper1">
           <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper liste-film-found">
             <!-- Slides -->
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
           </div>
           <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
@@ -114,28 +132,12 @@
         </div>
       </div>
       <!-- Liste des Series a Trouver -->
-      <div class="serie-liste-container">
-        <div class="serie-liste liste-titles">Les Séries - A trouver</div>
-        <div class="swiper">
+      <div class="serie-liste-container mt-3">
+        <div class="serie-liste liste-titles">Les Séries - Trouvées</div>
+        <div class="swiper swiper2">
           <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper liste-serie-found">
             <!-- Slides -->
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
           </div>
           <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
@@ -143,28 +145,12 @@
         </div>
       </div>
       <!-- Liste des Films -->
-      <div class="film-liste-container">
-        <div class="film-liste liste-titles">Les Films - Trouvés</div>
-        <div class="swiper">
+      <div class="film-liste-container mt-3">
+        <div class="film-liste liste-titles">Les Films - A Trouver</div>
+        <div class="swiper swiper3">
           <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper liste-film-notfound">
             <!-- Slides -->
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
           </div>
           <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
@@ -172,35 +158,22 @@
         </div>
       </div>
       <!-- Liste des Films -->
-      <div class="film-liste-container">
-        <div class="film-liste liste-titles">Les Films - Trouvés</div>
-        <div class="swiper">
+      <div class="film-liste-container mt-3">
+        <div class="film-liste liste-titles">Les Séries - A Trouver</div>
+        <div class="swiper swiper4">
           <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper liste-serie-notfound">
             <!-- Slides -->
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
-            <div class="swiper-slide"></div>
           </div>
           <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
       </div>
+      <div class="acsreal mt-5">Une réalisation ACS Lons le Saunier</div>
+      <div class="mentlegal mt-2">Mentions légales</div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

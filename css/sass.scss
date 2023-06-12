@@ -4,6 +4,8 @@ body {
   margin: 0px;
   padding: 0px;
   background-color: black;
+  width: 100vw;
+  height: 100vh;
 
   #grain {
     background-image: url(/images/graingif.gif);
@@ -89,15 +91,81 @@ body {
     background-size: cover;
     background-repeat: none;
     background-position: center;
+    position: relative;
+    .main-text-box {
+      margin-top: auto;
+      justify-content: flex-end;
+      flex-direction: column;
+      position: absolute;
+      bottom: 0;
+      @media (min-width: 991.98px) {
+        margin-left: 99px;
+      }
+      .main-title {
+        font-size: 4rem;
+        color: white;
+      }
+      .btn-hero {
+        display: flex;
+        flex-direction: column;
+        font-size: 2rem;
+        @media (min-width: 991.98px) {
+          flex-direction: row;
+          gap: 16px;
+        }
+        .btn-annonce {
+          color: black;
+          background-color: white;
+          border-radius: 4px;
+          padding: 10px;
+        }
+        .btn-info {
+          color: white;
+          background: rgba(109, 109, 110, 0.7);
+          border-radius: 4px;
+          padding: 10px;
+          @media (min-width: 991.98px) {
+            padding-right: 30px;
+            padding-left: 30px;
+          }
+        }
+      }
+    }
   }
 
   .navigation {
     align-items: center;
+    .nav-tab,
+    .offcanvas-title {
+      background-color: darkred;
+      font-size: 1.5rem;
+      color: antiquewhite;
+      .nav-tab-text {
+        color: antiquewhite;
+      }
+    }
 
     .logo {
       margin-right: auto;
+      background-image: url(/images/logo_moviequiz-mobile.png);
+      width: 74px;
+      height: 74px;
+      @media (min-width: 768px) {
+        background-image: url(/images/logo_moviequiz.png);
+        width: 300px;
+        height: 75px;
+        background-size: contain;
+      }
     }
     .howto {
+    }
+    .custom-toggler.navbar-toggler {
+      border-color: rgb(229, 9, 20);
+    }
+    .nav-btn {
+      .nav-span {
+        background-image: url(/images/bar.svg);
+      }
     }
   }
 
@@ -106,9 +174,16 @@ body {
     height: 150px;
     .swiper-wrapper {
       .swiper-slide {
-        background-image: url(/images/films/apocalypse.jpg);
         background-repeat: no-repeat;
         background-size: cover;
+        background-position: center;
+        text-align: center;
+        color: #e50914;
+        font-size: 1.5rem;
+        text-shadow: 0px 0px 5px rgb(255, 255, 255);
+      }
+      .swiper-grey {
+        filter: grayscale(100%);
       }
     }
     .swiper-button-prev,
@@ -121,5 +196,9 @@ body {
   .liste-titles {
     font-size: 1.6rem;
     color: white;
+  }
+  .acsreal,
+  .mentlegal {
+    text-align: center;
   }
 }

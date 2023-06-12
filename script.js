@@ -75,32 +75,177 @@ function glop() {
   }, 4100);
 }
 // FIN DU LOADING SCREEN
-// SWIPPER
-const swiper = new Swiper(".swiper", {
-  // Optional parameters
-  direction: "horizontal",
-  loop: true,
-  slidesPerView: 3,
-  spaceBetween: 3,
-  breakpoints: {
-    768: {
-      slidesPerView: 4,
-    },
-    992: {
-      slidesPerView: 6,
-    },
-    1200: {
-      slidesPerView: 8,
-    },
-  },
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination",
-  },
 
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+// FILMS TROUVES
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelector(".liste-film-found");
+    data.medias.movie.forEach((movie, index) => {
+      const element = document.createElement("div");
+      element.classList.add("swiper-slide", "liste-film");
+      element.id = movie.title.replace(/\s/g, "-");
+      element.style.backgroundImage = `url(${movie.picture})`;
+      slides.appendChild(element);
+    });
+    const swiper = new Swiper(".swiper1", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 3,
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+        },
+        992: {
+          slidesPerView: 6,
+        },
+        1200: {
+          slidesPerView: 8,
+        },
+      },
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+
+// SERIES TROUVEES
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelector(".liste-serie-found");
+    data.medias.serie.forEach((movie, index) => {
+      const element = document.createElement("div");
+      element.classList.add("swiper-slide", "liste-serie");
+      element.id = movie.title.replace(/\s/g, "-");
+      element.style.backgroundImage = `url(${movie.picture})`;
+      slides.appendChild(element);
+    });
+    const swiper = new Swiper(".swiper2", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 3,
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+        },
+        992: {
+          slidesPerView: 6,
+        },
+        1200: {
+          slidesPerView: 8,
+        },
+      },
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+
+// FILMS PAS TROUVES
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelector(".liste-film-notfound");
+    data.medias.movie.forEach((movie, index) => {
+      const element = document.createElement("div");
+      element.classList.add("swiper-slide", "liste-film", "swiper-grey");
+      element.id = movie.title.replace(/\s/g, "-");
+      element.style.backgroundImage = `url(${movie.picture})`;
+      slides.appendChild(element);
+    });
+    const swiper = new Swiper(".swiper3", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 3,
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+        },
+        992: {
+          slidesPerView: 6,
+        },
+        1200: {
+          slidesPerView: 8,
+        },
+      },
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+
+// SERIES PAS TROUVEES
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const slides = document.querySelector(".liste-serie-notfound");
+    data.medias.serie.forEach((movie, index) => {
+      const element = document.createElement("div");
+      element.classList.add("swiper-slide", "liste-serie", "swiper-grey");
+      element.id = movie.title.replace(/\s/g, "-");
+      element.style.backgroundImage = `url(${movie.picture})`;
+      slides.appendChild(element);
+    });
+    const swiper = new Swiper(".swiper4", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 3,
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+        },
+        992: {
+          slidesPerView: 6,
+        },
+        1200: {
+          slidesPerView: 8,
+        },
+      },
+      // If we need pagination
+      pagination: {
+        el: ".swiper-pagination",
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+
+// Fonction pour rajouter des slides au swiper
+// swiper.appendSlide([
+//   '<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
+//   '<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
+// ]);
