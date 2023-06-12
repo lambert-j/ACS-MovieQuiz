@@ -190,4 +190,29 @@ body .liste-titles {
 body .acsreal,
 body .mentlegal {
   text-align: center;
+}
+body .modal-content {
+  background-color: #0b0b0b;
+}
+body .modal-content .modal-header,
+body .modal-content h4,
+body .modal-content .close {
+  background-color: #e50914;
+  color: white !important;
+  text-align: center;
+  font-size: 30px;
+}
+body .modal-content .modal-body .proposition {
+  color: white;
+  font-size: 1.5rem;
+}
+body .modal-content .modal-footer {
+  background-color: #1b1b1b;
+}
+body .modal-content .modal-body-image {
+  background-image: url(/images/films/alien.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 300px;
 }/*# sourceMappingURL=sass.css.map */
