@@ -242,6 +242,8 @@ fetch("movie.json")
         prevEl: ".swiper-button-prev",
       },
     });
+    let swiperClone = swiper.clone();
+    modalBody.appendChild(swiperClone);
   });
 
 // Fonction pour rajouter des slides au swiper
@@ -249,3 +251,14 @@ fetch("movie.json")
 //   '<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
 //   '<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
 // ]);
+
+function listeCloning() {
+  // let listeFilm = document.querySelector(".film-liste-container");
+  // let listeSerie = document.querySelector(".serie-liste-container");
+  // let modalBody = document.querySelector(".modal-footer");
+  // let listeFilmClone = listeFilm.clone();
+  // let listeSerieClone = listeSerie.clone();
+  // listeFilmClone.classList.add("cloneSwipeFilm");
+  // listeSerieClone.classList.add("cloneSwipeSerie");
+  // modalBody.appendChild(listeFilmClone, listeSerieClone);
+}

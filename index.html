@@ -118,7 +118,7 @@
           </div>
         </nav>
       </div>
-      <!-- Liste des Films A Trouver -->
+      <!-- Liste des Films trouvés-->
       <div class="film-liste-container">
         <div class="film-liste liste-titles">Les Films - Trouvés</div>
         <div class="swiper swiper1">
@@ -131,7 +131,7 @@
           <div class="swiper-button-next"></div>
         </div>
       </div>
-      <!-- Liste des Series a Trouver -->
+      <!-- Liste des Series trouvées -->
       <div class="serie-liste-container mt-3">
         <div class="serie-liste liste-titles">Les Séries - Trouvées</div>
         <div class="swiper swiper2">
@@ -144,7 +144,7 @@
           <div class="swiper-button-next"></div>
         </div>
       </div>
-      <!-- Liste des Films -->
+      <!-- Liste des Films pas encore trouvés -->
       <div class="film-liste-container mt-3">
         <div class="film-liste liste-titles">Les Films - A Trouver</div>
         <div class="swiper swiper3">
@@ -157,8 +157,8 @@
           <div class="swiper-button-next"></div>
         </div>
       </div>
-      <!-- Liste des Films -->
-      <div class="film-liste-container mt-3">
+      <!-- Liste des séries pas encore trouvées -->
+      <div class="serie-liste-container mt-3">
         <div class="film-liste liste-titles">Les Séries - A Trouver</div>
         <div class="swiper swiper4">
           <!-- Additional required wrapper -->
@@ -174,7 +174,7 @@
       <div class="mentlegal mt-2">Mentions légales</div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" onclick="listeCloning()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
 
@@ -189,11 +189,13 @@
       <div class="modal-body">
         <div class="modal-body-image"></div>
         <div class="proposition">Votre Proposition :</div>
-       <input type="text" id="reponse">
-      </div>
-      <div class="modal-footer">
+       <input type="text" id="reponse" class="mb-1">
+       <br>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
         <button type="button" class="btn btn-primary">Vérifier</button>
+      </div>
+      <div class="modal-footer">
+
       </div>
     </div>
   </div>
