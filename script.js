@@ -16,6 +16,15 @@ const box2 = document.querySelector(".box2");
 const box3 = document.querySelector(".box3");
 const box4 = document.querySelector(".box4");
 const box5 = document.querySelector(".box5");
+// variable des swiper
+let swiper1, swiper2, swiper3, swiper4;
+// variable JSON
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    maFonctionquifaittout(data);
+  });
+function maFonctionquifaittout(data) {}
 // Animation Loading Screen
 glop();
 function glop() {
@@ -119,46 +128,42 @@ fetch("movie.json")
   });
 
 // SERIES TROUVEES
-fetch("movie.json")
-  .then((res) => res.json())
-  .then((data) => {
-    const slides = document.querySelector(".liste-serie-found");
-    data.medias.serie.forEach((movie, index) => {
-      const element = document.createElement("div");
-      element.classList.add("swiper-slide", "liste-serie");
-      element.id = movie.title.replace(/\s/g, "-");
-      element.style.backgroundImage = `url(${movie.picture})`;
-      slides.appendChild(element);
-    });
-    const swiper = new Swiper(".swiper2", {
-      // Optional parameters
-      direction: "horizontal",
-      loop: true,
-      slidesPerView: 3,
-      spaceBetween: 3,
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-        },
-        992: {
-          slidesPerView: 6,
-        },
-        1200: {
-          slidesPerView: 8,
-        },
-      },
-      // If we need pagination
-      pagination: {
-        el: ".swiper-pagination",
-      },
+// function createSwiper2() {
+//   const slides = document.querySelector(".liste-serie-found");
 
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  });
+//   slides.appendChild(newSlide);
+
+//   const swiper = new Swiper(".swiper2", {
+//     direction: "horizontal",
+//     loop: true,
+//     slidesPerView: 3,
+//     spaceBetween: 3,
+//     breakpoints: {
+//       768: {
+//         slidesPerView: 4,
+//       },
+//       992: {
+//         slidesPerView: 6,
+//       },
+//       1200: {
+//         slidesPerView: 8,
+//       },
+//     },
+//     pagination: {
+//       el: ".swiper-pagination",
+//     },
+//     navigation: {
+//       nextEl: ".swiper-button-next",
+//       prevEl: ".swiper-button-prev",
+//     },
+//   });
+// }
+
+// function createNewSlide() {
+//   let newSlide = document.createElement("div");
+//   newSlide.classList.add("swiper-slide", "liste-serie");
+//   newSlide.style.backgroundImage = "url(images/films/alien.jpg";
+// }
 
 // FILMS PAS TROUVES
 fetch("movie.json")
@@ -214,7 +219,7 @@ fetch("movie.json")
       element.style.backgroundImage = `url(${movie.picture})`;
       slides.appendChild(element);
     });
-    const swiper = new Swiper(".swiper4", {
+    swiper4 = new Swiper(".swiper4", {
       // Optional parameters
       direction: "horizontal",
       loop: true,
@@ -242,23 +247,11 @@ fetch("movie.json")
         prevEl: ".swiper-button-prev",
       },
     });
-    let swiperClone = swiper.clone();
-    modalBody.appendChild(swiperClone);
   });
 
-// Fonction pour rajouter des slides au swiper
-// swiper.appendSlide([
-//   '<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>',
-//   '<div class="swiper-slide">Slide ' + (++appendNumber) + '</div>'
-// ]);
-
-function listeCloning() {
-  // let listeFilm = document.querySelector(".film-liste-container");
-  // let listeSerie = document.querySelector(".serie-liste-container");
-  // let modalBody = document.querySelector(".modal-footer");
-  // let listeFilmClone = listeFilm.clone();
-  // let listeSerieClone = listeSerie.clone();
-  // listeFilmClone.classList.add("cloneSwipeFilm");
-  // listeSerieClone.classList.add("cloneSwipeSerie");
-  // modalBody.appendChild(listeFilmClone, listeSerieClone);
-}
+// createSwiper2();
+fetch("movie.json")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+  });

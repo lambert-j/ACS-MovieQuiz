@@ -109,6 +109,8 @@ body {
         display: flex;
         flex-direction: column;
         font-size: 2rem;
+        cursor: pointer;
+
         @media (min-width: 991.98px) {
           flex-direction: row;
           gap: 16px;
@@ -125,8 +127,9 @@ body {
           border-radius: 4px;
           padding: 10px;
           @media (min-width: 991.98px) {
-            padding-right: 30px;
-            padding-left: 30px;
+            width: 300px;
+            // padding-right: 30px;
+            // padding-left: 30px;
           }
         }
       }
