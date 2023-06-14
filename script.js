@@ -18,13 +18,7 @@ const box4 = document.querySelector(".box4");
 const box5 = document.querySelector(".box5");
 // variable des swiper
 let swiper1, swiper2, swiper3, swiper4;
-// variable JSON
-fetch("movie.json")
-  .then((res) => res.json())
-  .then((data) => {
-    maFonctionquifaittout(data);
-  });
-function maFonctionquifaittout(data) {}
+
 // Animation Loading Screen
 glop();
 function glop() {
@@ -85,85 +79,77 @@ function glop() {
 }
 // FIN DU LOADING SCREEN
 
-// FILMS TROUVES
+// variable JSON
 fetch("movie.json")
   .then((res) => res.json())
   .then((data) => {
-    const slides = document.querySelector(".liste-film-found");
-    data.medias.movie.forEach((movie, index) => {
-      const element = document.createElement("div");
-      element.classList.add("swiper-slide", "liste-film");
-      element.id = movie.title.replace(/\s/g, "-");
-      element.style.backgroundImage = `url(${movie.picture})`;
-      slides.appendChild(element);
-    });
-    const swiper = new Swiper(".swiper1", {
-      // Optional parameters
-      direction: "horizontal",
-      loop: true,
-      slidesPerView: 3,
-      spaceBetween: 3,
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-        },
-        992: {
-          slidesPerView: 6,
-        },
-        1200: {
-          slidesPerView: 8,
-        },
-      },
-      // If we need pagination
-      pagination: {
-        el: ".swiper-pagination",
-      },
-
-      // Navigation arrows
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
+    maFonctionquifaittout(data);
   });
+function maFonctionquifaittout(data) {}
+
+// FILMS TROUVES
+function createSwiper1() {
+  const slides = document.querySelector(".liste-film-found");
+
+  const swiper = new Swiper(".swiper1", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 3,
+    breakpoints: {
+      768: {
+        slidesPerView: 4,
+      },
+      992: {
+        slidesPerView: 6,
+      },
+      1200: {
+        slidesPerView: 8,
+      },
+    },
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+}
 
 // SERIES TROUVEES
-// function createSwiper2() {
-//   const slides = document.querySelector(".liste-serie-found");
+function createSwiper2() {
+  const slides = document.querySelector(".liste-serie-found");
 
-//   slides.appendChild(newSlide);
-
-//   const swiper = new Swiper(".swiper2", {
-//     direction: "horizontal",
-//     loop: true,
-//     slidesPerView: 3,
-//     spaceBetween: 3,
-//     breakpoints: {
-//       768: {
-//         slidesPerView: 4,
-//       },
-//       992: {
-//         slidesPerView: 6,
-//       },
-//       1200: {
-//         slidesPerView: 8,
-//       },
-//     },
-//     pagination: {
-//       el: ".swiper-pagination",
-//     },
-//     navigation: {
-//       nextEl: ".swiper-button-next",
-//       prevEl: ".swiper-button-prev",
-//     },
-//   });
-// }
-
-// function createNewSlide() {
-//   let newSlide = document.createElement("div");
-//   newSlide.classList.add("swiper-slide", "liste-serie");
-//   newSlide.style.backgroundImage = "url(images/films/alien.jpg";
-// }
+  const swiper = new Swiper(".swiper2", {
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 3,
+    breakpoints: {
+      768: {
+        slidesPerView: 4,
+      },
+      992: {
+        slidesPerView: 6,
+      },
+      1200: {
+        slidesPerView: 8,
+      },
+    },
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+}
 
 // FILMS PAS TROUVES
 fetch("movie.json")
@@ -175,6 +161,14 @@ fetch("movie.json")
       element.classList.add("swiper-slide", "liste-film", "swiper-grey");
       element.id = movie.title.replace(/\s/g, "-");
       element.style.backgroundImage = `url(${movie.picture})`;
+      element.onclick = function (e) {
+        let target = e.target;
+        target.classList.remove("swiper-grey");
+        target.innerHTML = target.id.replace(/-/g, " ");
+        const parent = document.querySelector(".swiper1");
+        parent.swiper.appendSlide(target);
+        target.onclick = "";
+      };
       slides.appendChild(element);
     });
     const swiper = new Swiper(".swiper3", {
@@ -217,6 +211,14 @@ fetch("movie.json")
       element.classList.add("swiper-slide", "liste-serie", "swiper-grey");
       element.id = movie.title.replace(/\s/g, "-");
       element.style.backgroundImage = `url(${movie.picture})`;
+      element.onclick = function (e) {
+        let target = e.target;
+        target.classList.remove("swiper-grey");
+        target.innerHTML = target.id.replace(/-/g, " ");
+        const parent = document.querySelector(".swiper2");
+        parent.swiper.appendSlide(target);
+        target.onclick = "";
+      };
       slides.appendChild(element);
     });
     swiper4 = new Swiper(".swiper4", {
@@ -249,9 +251,5 @@ fetch("movie.json")
     });
   });
 
-// createSwiper2();
-fetch("movie.json")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  });
+createSwiper1();
+createSwiper2();
