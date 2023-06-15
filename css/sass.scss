@@ -128,8 +128,6 @@ body {
           padding: 10px;
           @media (min-width: 991.98px) {
             width: 300px;
-            // padding-right: 30px;
-            // padding-left: 30px;
           }
         }
       }
@@ -225,11 +223,15 @@ body {
       background-color: #1b1b1b;
     }
     .modal-body-image {
-      background-image: url(/images/films/alien.jpg);
+      // background-image: url(/images/films/alien.jpg);
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
       height: 300px;
+      font-size: 2rem;
+      color: #e50914;
+      text-align: center;
+      text-shadow: 2px 2px 5px #e50914;
     }
   }
 }

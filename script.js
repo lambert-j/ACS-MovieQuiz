@@ -19,6 +19,17 @@ const box5 = document.querySelector(".box5");
 // variable des swiper
 let swiper1, swiper2, swiper3, swiper4;
 
+// Variable global
+// const modalimg = document.querySelector(".modal-body-image");
+let imageModalTargetId;
+let parent;
+let target;
+const modal = new bootstrap.Modal(document.querySelector("#exampleModal"));
+// Event Listeners
+const verif = document
+  .querySelector("#verification")
+  .addEventListener("click", verification);
+
 // Animation Loading Screen
 glop();
 function glop() {
@@ -162,12 +173,14 @@ fetch("movie.json")
       element.id = movie.title.replace(/\s/g, "-");
       element.style.backgroundImage = `url(${movie.picture})`;
       element.onclick = function (e) {
-        let target = e.target;
-        target.classList.remove("swiper-grey");
-        target.innerHTML = target.id.replace(/-/g, " ");
-        const parent = document.querySelector(".swiper1");
-        parent.swiper.appendSlide(target);
-        target.onclick = "";
+        const modalimg = document.querySelector(".modal-body-image");
+        modal.show();
+        target = e.target;
+        imageModalTargetId = target.id;
+        parent = document.querySelector(".swiper1");
+        let targetstyle = getComputedStyle(target).backgroundImage;
+        modalimg.id = target.id.replace(/-/g, " ").toLowerCase();
+        modalimg.style.backgroundImage = targetstyle;
       };
       slides.appendChild(element);
     });
@@ -212,13 +225,16 @@ fetch("movie.json")
       element.id = movie.title.replace(/\s/g, "-");
       element.style.backgroundImage = `url(${movie.picture})`;
       element.onclick = function (e) {
-        let target = e.target;
-        target.classList.remove("swiper-grey");
-        target.innerHTML = target.id.replace(/-/g, " ");
-        const parent = document.querySelector(".swiper2");
-        parent.swiper.appendSlide(target);
-        target.onclick = "";
+        const modalimg = document.querySelector(".modal-body-image");
+        modal.show();
+        target = e.target;
+        imageModalTargetId = target.id;
+        parent = document.querySelector(".swiper2");
+        let targetstyle = getComputedStyle(target).backgroundImage;
+        modalimg.id = target.id.replace(/-/g, " ").toLowerCase();
+        modalimg.style.backgroundImage = targetstyle;
       };
+
       slides.appendChild(element);
     });
     swiper4 = new Swiper(".swiper4", {
@@ -250,6 +266,28 @@ fetch("movie.json")
       },
     });
   });
+
+function verification() {
+  let imagecible = document.querySelector(".modal-body-image");
+  let targetid = imagecible.id.replace(/-/g, " ");
+  targetid = targetid.toLowerCase();
+  let response = document.querySelector("#reponse").value;
+  response = response.toLowerCase();
+  if (response == targetid) {
+    imagecible.innerHTML = "Bravo !";
+    setTimeout(() => {
+      modal.hide();
+      target.classList.remove("swiper-grey");
+      target.innerHTML = target.id.replace(/-/g, " ");
+      target.onclick = "";
+      parent.swiper.appendSlide(target);
+      imagecible.innerHTML = "";
+    }, 3000);
+  } else {
+    console.log("non");
+  }
+  console.log(targetid, "targetid");
+}
 
 createSwiper1();
 createSwiper2();
