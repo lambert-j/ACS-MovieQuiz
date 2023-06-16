@@ -25,6 +25,8 @@ let imageModalTargetId;
 let parent;
 let target;
 const modal = new bootstrap.Modal(document.querySelector("#exampleModal"));
+const hero = document.querySelector(".hero");
+const mainTitle = document.querySelector(".main-title");
 // Event Listeners
 const verif = document
   .querySelector("#verification")
@@ -268,6 +270,7 @@ fetch("movie.json")
   });
 
 function verification() {
+  const inputResp = document.querySelector("#reponse");
   let imagecible = document.querySelector(".modal-body-image");
   let targetid = imagecible.id.replace(/-/g, " ");
   targetid = targetid.toLowerCase();
@@ -275,16 +278,34 @@ function verification() {
   response = response.toLowerCase();
   if (response == targetid) {
     imagecible.innerHTML = "Bravo !";
+    inputResp.style.backgroundColor = "#adff2f";
+    inputResp.style.outline = "1px solid green";
+    document.querySelector("body").style.pointerEvents = "none";
     setTimeout(() => {
       modal.hide();
+      hero.style.backgroundImage = getComputedStyle(target).backgroundImage;
+      mainTitle.innerHTML = imageModalTargetId;
       target.classList.remove("swiper-grey");
       target.innerHTML = target.id.replace(/-/g, " ");
       target.onclick = "";
       parent.swiper.appendSlide(target);
       imagecible.innerHTML = "";
+      inputResp.value = "";
+      inputResp.style.backgroundColor = "";
+      inputResp.style.outline = "none";
+      document.querySelector("body").style.pointerEvents = "";
     }, 3000);
   } else {
+    inputResp.style.outline = "1px solid #e50914";
+    inputResp.style.backgroundColor = "#ff5a6281";
+    inputResp.value = "";
+    document.querySelector("body").style.pointerEvents = "none";
     console.log("non");
+    setTimeout(() => {
+      inputResp.style.backgroundColor = "";
+      document.querySelector("body").style.pointerEvents = "";
+      inputResp.style.outline = "none";
+    }, 1000);
   }
   console.log(targetid, "targetid");
 }

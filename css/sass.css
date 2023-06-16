@@ -99,6 +99,7 @@ body .hero .main-text-box {
 body .hero .main-text-box .main-title {
   font-size: 4rem;
   color: white;
+  text-shadow: 0px 0px 10px black;
 }
 body .hero .main-text-box .btn-hero {
   display: flex;
@@ -130,6 +131,7 @@ body .hero .main-text-box .btn-hero .btn-info {
   }
 }
 body .navigation {
+  width: 99vw;
   align-items: center;
 }
 body .navigation .nav-tab,
@@ -206,6 +208,9 @@ body .modal-content .modal-body .proposition {
   color: white;
   font-size: 1.5rem;
 }
+body .modal-content .modal-body #reponse {
+  outline: none;
+}
 body .modal-content .modal-footer {
   background-color: #1b1b1b;
 }
@@ -214,8 +219,8 @@ body .modal-content .modal-body-image {
   background-size: contain;
   background-repeat: no-repeat;
   height: 300px;
-  font-size: 2rem;
+  font-size: 3rem;
   color: #e50914;
   text-align: center;
-  text-shadow: 2px 2px 5px #e50914;
+  text-shadow: 2px 2px 10px #ffffff;
 }/*# sourceMappingURL=sass.css.map */
