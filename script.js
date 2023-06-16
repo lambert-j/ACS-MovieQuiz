@@ -16,6 +16,23 @@ const box2 = document.querySelector(".box2");
 const box3 = document.querySelector(".box3");
 const box4 = document.querySelector(".box4");
 const box5 = document.querySelector(".box5");
+
+//Variable de l'API
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Nzk2MjE4YTQ4MGUwNzViMGVjZDc5OTI1ZmU3YmM1ZCIsInN1YiI6IjY0OGMyM2YyNDJiZjAxMDBlNDlkODAzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qma1oLvBkJg2f0tN36KqR-n0p8NcJamuzRfYhHf8_rA",
+  },
+};
+let api_query = "dark";
+const api_key = "8796218a480e075b0ecd79925fe7bc5d";
+const base_url = "http://api.themoviedb.org/3/";
+const url_img = "http://image.tmdb.org/t/p/";
+const api_url =
+  base_url + "/search/movie?api_key=" + api_key + "&query=" + api_query;
+//https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}
 // variable des swiper
 let swiper1, swiper2, swiper3, swiper4;
 
@@ -312,3 +329,14 @@ function verification() {
 
 createSwiper1();
 createSwiper2();
+
+//test api
+getapi(api_url, options);
+
+function getapi(url, options) {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
