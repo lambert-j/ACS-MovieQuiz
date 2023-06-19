@@ -26,24 +26,30 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Nzk2MjE4YTQ4MGUwNzViMGVjZDc5OTI1ZmU3YmM1ZCIsInN1YiI6IjY0OGMyM2YyNDJiZjAxMDBlNDlkODAzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qma1oLvBkJg2f0tN36KqR-n0p8NcJamuzRfYhHf8_rA",
   },
 };
-let api_query = "dark";
+let api_query = "28";
 const api_key = "8796218a480e075b0ecd79925fe7bc5d";
 const base_url = "http://api.themoviedb.org/3/";
 const url_img = "http://image.tmdb.org/t/p/";
-const api_url =
-  base_url + "/search/movie?api_key=" + api_key + "&query=" + api_query;
+const lang = "&language=fr-FR";
+const api_url = base_url + "movie/" + api_query + "?api_key=" + api_key + lang;
+// base_url + "/search/movie?api_key=" + api_key + "&query=" + api_query;
+
 //https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}
 // variable des swiper
 let swiper1, swiper2, swiper3, swiper4;
 
 // Variable global
-// const modalimg = document.querySelector(".modal-body-image");
+let titreRecherche;
 let imageModalTargetId;
 let parent;
 let target;
 const modal = new bootstrap.Modal(document.querySelector("#exampleModal"));
+const modalDetail = new bootstrap.Modal(
+  document.querySelector("#modaldetails")
+);
 const hero = document.querySelector(".hero");
 const mainTitle = document.querySelector(".main-title");
+const detailBtn = document.querySelector(".btn-info");
 // Event Listeners
 const verif = document
   .querySelector("#verification")
@@ -301,30 +307,44 @@ function verification() {
     setTimeout(() => {
       modal.hide();
       hero.style.backgroundImage = getComputedStyle(target).backgroundImage;
+      imageModalTargetId = imageModalTargetId.replace(/-/g, " ");
       mainTitle.innerHTML = imageModalTargetId;
+      titreRecherche = imageModalTargetId;
       target.classList.remove("swiper-grey");
       target.innerHTML = target.id.replace(/-/g, " ");
-      target.onclick = "";
-      parent.swiper.appendSlide(target);
+      // target.onclick = "";
+
       imagecible.innerHTML = "";
       inputResp.value = "";
       inputResp.style.backgroundColor = "";
       inputResp.style.outline = "none";
       document.querySelector("body").style.pointerEvents = "";
+      target.onclick = async function () {
+        let obj;
+        const res = await fetch("movie.json");
+        obj = await res.json();
+        for (let i = 0; i < obj.medias.movie.length; i++) {
+          if (obj.medias.movie[i].title === titreRecherche) {
+            idnumber = obj.medias.movie[i].id;
+            break;
+          }
+        }
+        console.log(idnumber);
+        console.log(obj.medias.movie.length);
+      };
+      parent.swiper.appendSlide(target);
     }, 3000);
   } else {
     inputResp.style.outline = "1px solid #e50914";
     inputResp.style.backgroundColor = "#ff5a6281";
     inputResp.value = "";
     document.querySelector("body").style.pointerEvents = "none";
-    console.log("non");
     setTimeout(() => {
       inputResp.style.backgroundColor = "";
       document.querySelector("body").style.pointerEvents = "";
       inputResp.style.outline = "none";
     }, 1000);
   }
-  console.log(targetid, "targetid");
 }
 
 createSwiper1();
@@ -337,6 +357,67 @@ function getapi(url, options) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      detailBtn.onclick = function () {
+        const modalimgdetail = document.querySelector(
+          ".modal-body-image-detail"
+        );
+        modalimgdetail.style.backgroundImage =
+          getComputedStyle(hero).backgroundImage;
+
+        document.querySelector("#detailModalLabel").innerHTML =
+          mainTitle.innerHTML;
+        document.querySelector(".movie-overview").innerHTML = data.overview;
+        modalDetail.show();
+      };
+      console.log(data.overview);
     });
 }
+
+function findDetailfilm() {
+  fetch("movie.json")
+    .then((res) => res.json())
+    .then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].medias.movie.titles === titreRecherche) {
+          api_query = data[i].id;
+          break;
+        }
+      }
+    });
+}
+
+function testapi(idnumber) {
+  api_query = idnumber;
+  console.log("api", api_query, "idn", idnumber);
+}
+
+// target.onclick = function () {
+//   let idnumber;
+//   fetch("movie.json")
+//     .then((res) => res.json())
+//     .then((data) => {
+//       for (let i = 0; i < data.length; i++) {
+//         if (data[i].medias.movie.title === titreRecherche) {
+//           idnumber = data[i].id;
+//           break;
+//         }
+//       }
+//     })
+//     .then(() => {
+//       testapi(idnumber);
+//     });
+// };
+
+// async function fff() {
+//   let obj;
+//   const res = await fetch("movie.json");
+//   obj = await res.json();
+//   for (let i = 0; i < obj.medias.movie.length; i++) {
+//     if (obj.medias.movie[i].title === titreRecherche) {
+//       idnumber = obj.medias.movie[i].id;
+//       break;
+//     }
+//   }
+//   console.log(idnumber);
+//   console.log(obj.medias.movie.length);
+// }

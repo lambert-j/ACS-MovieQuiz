@@ -204,6 +204,15 @@ body .modal-content .close {
   text-align: center;
   font-size: 30px;
 }
+body .modal-content .modal-header .modal-title-detail,
+body .modal-content h4 .modal-title-detail,
+body .modal-content .close .modal-title-detail {
+  font-size: 2rem;
+}
+body .modal-content .modal-body .movie-overview {
+  color: white;
+  font-size: 1.2rem;
+}
 body .modal-content .modal-body .proposition {
   color: white;
   font-size: 1.5rem;
@@ -214,7 +223,8 @@ body .modal-content .modal-body #reponse {
 body .modal-content .modal-footer {
   background-color: #1b1b1b;
 }
-body .modal-content .modal-body-image {
+body .modal-content .modal-body-image,
+body .modal-content .modal-body-image-detail {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

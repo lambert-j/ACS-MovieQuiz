@@ -214,8 +214,15 @@ body {
       color: white !important;
       text-align: center;
       font-size: 30px;
+      .modal-title-detail {
+        font-size: 2rem;
+      }
     }
     .modal-body {
+      .movie-overview {
+        color: white;
+        font-size: 1.2rem;
+      }
       .proposition {
         color: white;
         font-size: 1.5rem;
@@ -227,7 +234,8 @@ body {
     .modal-footer {
       background-color: #1b1b1b;
     }
-    .modal-body-image {
+    .modal-body-image,
+    .modal-body-image-detail {
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
