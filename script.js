@@ -31,7 +31,9 @@ const api_key = "8796218a480e075b0ecd79925fe7bc5d";
 const base_url = "http://api.themoviedb.org/3/";
 const url_img = "http://image.tmdb.org/t/p/";
 const lang = "&language=fr-FR";
-let api_url = base_url + "movie/" + api_query + "?api_key=" + api_key + lang;
+let api_url = function (id) {
+  return base_url + "movie/" + id + "?api_key=" + api_key + lang;
+};
 // base_url + "/search/movie?api_key=" + api_key + "&query=" + api_query;
 
 //https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}
@@ -291,7 +293,7 @@ fetch("movie.json")
       },
     });
   });
-
+let temp = null;
 function verification() {
   const inputResp = document.querySelector("#reponse");
   let imagecible = document.querySelector(".modal-body-image");
@@ -321,15 +323,16 @@ function verification() {
       document.querySelector("body").style.pointerEvents = "";
       target.onclick = async function () {
         let obj;
-        const res = await fetch("movie.json");
+        const res = await fetch("./movie.json");
         obj = await res.json();
         for (let i = 0; i < obj.medias.movie.length; i++) {
           if (obj.medias.movie[i].title === titreRecherche) {
-            idnumber = obj.medias.movie[i].id;
+            api_query = obj.medias.movie[i].id;
+            temp = obj.medias.movie[i].id;
             break;
           }
         }
-        console.log(idnumber);
+        console.log(api_query);
         console.log(obj.medias.movie.length);
       };
       parent.swiper.appendSlide(target);
@@ -351,7 +354,9 @@ createSwiper1();
 createSwiper2();
 
 //test api
-detailBtn.onclick = getapi(api_url, options);
+detailBtn.addEventListener("click", (e) => {
+  getapi(api_url(temp), options);
+});
 
 // function getapi(url, options) {
 //   fetch(url)
@@ -381,5 +386,6 @@ async function getapi(api_url, options) {
   modalimgdetail.style.backgroundImage = getComputedStyle(hero).backgroundImage;
   document.querySelector("#detailModalLabel").innerHTML = mainTitle.innerHTML;
   document.querySelector(".movie-overview").innerHTML = obj.overview;
+
   modalDetail.show();
 }
