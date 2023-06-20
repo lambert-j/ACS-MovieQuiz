@@ -49,6 +49,7 @@ const modal = new bootstrap.Modal(document.querySelector("#exampleModal"));
 const modalDetail = new bootstrap.Modal(
   document.querySelector("#modaldetails")
 );
+const modalHowTo = new bootstrap.Modal(document.querySelector("#modalHowTo"));
 const hero = document.querySelector(".hero");
 const mainTitle = document.querySelector(".main-title");
 const detailBtn = document.querySelector(".btn-info");
@@ -124,6 +125,71 @@ fetch("movie.json")
     maFonctionquifaittout(data);
   });
 function maFonctionquifaittout(data) {}
+
+// NavBar
+
+const navAcc = document.querySelector("#navAccueilBtn");
+const navFilm = document.querySelector("#navFilmBtn");
+const navSerie = document.querySelector("#navSerieBtn");
+const navFilmEtSerie = document.querySelector("#navFilmEtSerieBtn");
+const navCommentJouer = document.querySelector("#navCommentJouerBtn");
+const filmListe = document.querySelectorAll(".film-liste-container");
+const serieListe = document.querySelectorAll(".serie-liste-container");
+
+navAcc.addEventListener("click", accueilBtn);
+navFilm.addEventListener("click", filmsBtn);
+navSerie.addEventListener("click", serieBtn);
+navFilmEtSerie.addEventListener("click", filmEtSerieBtn);
+navCommentJouer.addEventListener("click", commentJouerBtn);
+
+function accueilBtn() {
+  // resetFilms();
+  // resetSerie();
+  // toggleNavBar();
+  location.reload();
+}
+function filmsBtn() {
+  resetFilms();
+  serieListe.forEach((element) => {
+    element.classList.add("display-none");
+  });
+  toggleNavBar();
+}
+function serieBtn() {
+  resetSerie();
+  filmListe.forEach((element) => {
+    element.classList.add("display-none");
+  });
+  toggleNavBar();
+}
+
+function filmEtSerieBtn() {
+  resetFilms();
+  resetSerie();
+  toggleNavBar();
+}
+function commentJouerBtn() {
+  toggleNavBar();
+  modalHowTo.show();
+}
+
+function resetFilms() {
+  filmListe.forEach((element) => {
+    element.classList.remove("display-none");
+  });
+}
+function resetSerie() {
+  serieListe.forEach((element) => {
+    element.classList.remove("display-none");
+  });
+}
+
+function toggleNavBar() {
+  offcanvas.toggle();
+}
+
+const offcanvasNavbar = document.getElementById("offcanvasNavbar");
+const offcanvas = new bootstrap.Offcanvas(offcanvasNavbar);
 
 // FILMS TROUVES
 function createSwiper1() {

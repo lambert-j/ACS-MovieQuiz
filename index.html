@@ -90,25 +90,25 @@
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                    <a
+                    <a  id="navAccueilBtn" 
                       class="nav-link nav-tab-text"
                       aria-current="page"
                       href="#"
-                      >Accueil</a>
+                      >Redémarrer le Jeu</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-tab-text" href="#">Films</a>
+                    <a id="navFilmBtn" class="nav-link nav-tab-text" href="#">Films</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-tab-text" href="#">Séries</a>
+                    <a id="navSerieBtn" class="nav-link nav-tab-text" href="#">Séries</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-tab-text" href="#"
+                    <a id="navFilmEtSerieBtn" class="nav-link nav-tab-text" href="#"
                       >Tous les films et séries</a
                     >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link nav-tab-text" href="#"
+                    <a id="navCommentJouerBtn" class="nav-link nav-tab-text" href="#"
                       >Comment jouer ?</a
                     >
                   </li>
@@ -123,12 +123,8 @@
       <div class="film-liste-container mt-3">
         <div class="film-liste liste-titles">Les Films - A Trouver</div>
         <div class="swiper swiper3">
-          <!-- Additional required wrapper -->
           <div class="swiper-wrapper liste-film-notfound">
-            <!-- Slides -->
-
           </div>
-          <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
@@ -137,11 +133,8 @@
       <div class="serie-liste-container mt-3">
         <div class="film-liste liste-titles">Les Séries - A Trouver</div>
         <div class="swiper swiper4">
-          <!-- Additional required wrapper -->
           <div class="swiper-wrapper liste-serie-notfound">
-            <!-- Slides -->
           </div>
-          <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
@@ -150,11 +143,8 @@
       <div class="film-liste-container">
         <div class="film-liste liste-titles">Les Films - Trouvés</div>
         <div class="swiper swiper1">
-          <!-- Additional required wrapper -->
           <div class="swiper-wrapper liste-film-found">
-            <!-- Slides -->
           </div>
-          <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
@@ -163,11 +153,8 @@
       <div class="serie-liste-container mt-3">
         <div class="serie-liste liste-titles">Les Séries - Trouvées</div>
         <div class="swiper swiper2">
-          <!-- Additional required wrapper -->
           <div class="swiper-wrapper liste-serie-found">
-            <!-- Slides -->
           </div>
-          <!-- If we need navigation buttons -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
@@ -216,6 +203,34 @@
     </div>
   </div>
 </div>
+<!-- Modal Comment Jouer -->
+<div class="modal fade" id="modalHowTo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title-HowTo" id="HowToModalLabel">Comment Jouer ?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div  class="modal-body-image-HowTo"></div>
+        <ol class="text-white">
+          <li class="HowTo-Items">Choix des catégories : Jouez avec des films, des séries ou les deux en utilisant des boutons ou des cases à cocher.</li>
+          <li class="HowTo-Items">Réponses : Cliquez sur une image pour proposer une réponse.</li>
+          <li class="HowTo-Items">Validation : Si la réponse est correcte, le film ou la série est validé(e) et ajouté(e) à la liste des trouvés.</li>
+          <li class="HowTo-Items">Redémarrage : Utilisez le bouton "Redémarrer le jeu" pour recommencer à zéro.</li>
+          <li class="HowTo-Items">Affichage : Cliquez sur un élément trouvé pour l'afficher en grand en haut de la page.</li>
+          <li class="HowTo-Items">Bande-annonce : Regardez la bande-annonce en cliquant sur le bouton dédié.</li>
+          <li class="HowTo-Items">Plus d'info : Accédez au synopsis et aux acteurs en cliquant sur le bouton "Plus d'info".</li>
+        </ol>
+        
+        </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
     </div>
   </div>
     </div>
