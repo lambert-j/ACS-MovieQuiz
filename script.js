@@ -369,6 +369,7 @@ function verification() {
   response = response.toLowerCase();
   if (response == targetid) {
     imagecible.innerHTML = "Bravo !";
+    imagecible.style.color = "#adff2f";
     inputResp.style.backgroundColor = "#adff2f";
     inputResp.style.outline = "1px solid green";
     document.querySelector("body").style.pointerEvents = "none";
