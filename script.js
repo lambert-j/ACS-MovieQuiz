@@ -41,6 +41,7 @@ let api_url = function (id) {
 let swiper1, swiper2, swiper3, swiper4;
 
 // Variable global
+let annBtn = document.querySelector(".btn-annonce");
 let titreRecherche;
 let imageModalTargetId;
 let parent;
@@ -305,13 +306,9 @@ fetch("movie.json")
         prevEl: ".swiper-button-prev",
       },
     });
-  });
 
-// SERIES PAS TROUVEES
-fetch("movie.json")
-  .then((res) => res.json())
-  .then((data) => {
-    const slides = document.querySelector(".liste-serie-notfound");
+    // SERIES PAS TROUVEES
+    const slides2 = document.querySelector(".liste-serie-notfound");
     data.medias.serie.forEach((movie, index) => {
       const element = document.createElement("div");
       element.classList.add("swiper-slide", "liste-serie", "swiper-grey");
@@ -328,7 +325,7 @@ fetch("movie.json")
         modalimg.style.backgroundImage = targetstyle;
       };
 
-      slides.appendChild(element);
+      slides2.appendChild(element);
     });
     swiper4 = new Swiper(".swiper4", {
       // Optional parameters
@@ -358,7 +355,43 @@ fetch("movie.json")
         prevEl: ".swiper-button-prev",
       },
     });
+
+    annBtn.addEventListener("click", (e) => {
+      let urlYoutube;
+      for (let i = 0; i < data.medias.movie.length; i++) {
+        if (data.medias.movie[i].title === mainTitle.innerHTML) {
+          urlYoutube = data.medias.movie[i].video;
+          break;
+        } else if (data.medias.serie[i].title === mainTitle.innerHTML) {
+          urlYoutube = data.medias.serie[i].video;
+          break;
+        }
+      }
+      window.open(urlYoutube, "_blank");
+    });
+
+    detailBtn.addEventListener("click", (e) => {
+      const modalimgdetail = document.querySelector(".modal-body-image-detail");
+      modalimgdetail.style.backgroundImage =
+        getComputedStyle(hero).backgroundImage;
+      document.querySelector("#detailModalLabel").innerHTML =
+        mainTitle.innerHTML;
+      for (let i = 0; i < data.medias.movie.length; i++) {
+        if (data.medias.movie[i].title === mainTitle.innerHTML) {
+          document.querySelector(".movie-overview").innerHTML =
+            data.medias.movie[i].overview;
+          break;
+        } else if (data.medias.serie[i].title === mainTitle.innerHTML) {
+          document.querySelector(".movie-overview").innerHTML =
+            data.medias.serie[i].overview;
+          break;
+        }
+      }
+
+      modalDetail.show();
+    });
   });
+
 let temp = null;
 function verification() {
   const inputResp = document.querySelector("#reponse");
@@ -381,8 +414,6 @@ function verification() {
       titreRecherche = imageModalTargetId;
       target.classList.remove("swiper-grey");
       target.innerHTML = target.id.replace(/-/g, " ");
-      // target.onclick = "";
-
       imagecible.innerHTML = "";
       inputResp.value = "";
       inputResp.style.backgroundColor = "";
@@ -400,7 +431,6 @@ function verification() {
           }
         }
         console.log(api_query);
-        console.log(obj.medias.movie.length);
       };
       parent.swiper.appendSlide(target);
     }, 3000);
@@ -421,9 +451,6 @@ createSwiper1();
 createSwiper2();
 
 //test api
-detailBtn.addEventListener("click", (e) => {
-  getapi(api_url(temp), options);
-});
 
 // function getapi(url, options) {
 //   fetch(url)
@@ -445,14 +472,14 @@ detailBtn.addEventListener("click", (e) => {
 //     });
 // }
 
-async function getapi(api_url, options) {
-  let obj;
-  const res = await fetch(api_url);
-  obj = await res.json();
-  const modalimgdetail = document.querySelector(".modal-body-image-detail");
-  modalimgdetail.style.backgroundImage = getComputedStyle(hero).backgroundImage;
-  document.querySelector("#detailModalLabel").innerHTML = mainTitle.innerHTML;
-  document.querySelector(".movie-overview").innerHTML = obj.overview;
+// async function getapi(api_url, options) {
+//   let obj;
+//   const res = await fetch(api_url);
+//   obj = await res.json();
+//   const modalimgdetail = document.querySelector(".modal-body-image-detail");
+//   modalimgdetail.style.backgroundImage = getComputedStyle(hero).backgroundImage;
+//   document.querySelector("#detailModalLabel").innerHTML = mainTitle.innerHTML;
+//   document.querySelector(".movie-overview").innerHTML = obj.overview;
 
-  modalDetail.show();
-}
+//   modalDetail.show();
+// }
