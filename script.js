@@ -357,8 +357,8 @@ fetch("movie.json")
 
     let api_query = "";
     const api_key = "8796218a480e075b0ecd79925fe7bc5d";
-    const base_url = "http://api.themoviedb.org/3/";
-    const url_img = "http://image.tmdb.org/t/p/";
+    const base_url = "https://api.themoviedb.org/3/";
+    const url_img = "https://image.tmdb.org/t/p/";
     const lang = "&language=fr-FR";
     let api_url =
       base_url + "movie/" + api_query + "?api_key=" + api_key + lang;
