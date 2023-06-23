@@ -26,10 +26,6 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Nzk2MjE4YTQ4MGUwNzViMGVjZDc5OTI1ZmU3YmM1ZCIsInN1YiI6IjY0OGMyM2YyNDJiZjAxMDBlNDlkODAzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qma1oLvBkJg2f0tN36KqR-n0p8NcJamuzRfYhHf8_rA",
   },
 };
-
-// base_url + "/search/movie?api_key=" + api_key + "&query=" + api_query;
-
-//https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}
 // variable des swiper
 let swiper1, swiper2, swiper3, swiper4;
 
@@ -113,7 +109,6 @@ function glop() {
 // FIN DU LOADING SCREEN
 
 // NavBar
-
 const navAcc = document.querySelector("#navAccueilBtn");
 const navFilm = document.querySelector("#navFilmBtn");
 const navSerie = document.querySelector("#navSerieBtn");
@@ -182,7 +177,6 @@ function createSwiper1() {
   const slides = document.querySelector(".liste-film-found");
 
   const swiper = new Swiper(".swiper1", {
-    // Optional parameters
     direction: "horizontal",
     loop: true,
     slidesPerView: 3,
@@ -198,12 +192,9 @@ function createSwiper1() {
         slidesPerView: 8,
       },
     },
-    // If we need pagination
     pagination: {
       el: ".swiper-pagination",
     },
-
-    // Navigation arrows
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -264,7 +255,6 @@ fetch("movie.json")
       slides.appendChild(element);
     });
     const swiper = new Swiper(".swiper3", {
-      // Optional parameters
       direction: "horizontal",
       loop: true,
       slidesPerView: 3,
@@ -280,12 +270,9 @@ fetch("movie.json")
           slidesPerView: 8,
         },
       },
-      // If we need pagination
       pagination: {
         el: ".swiper-pagination",
       },
-
-      // Navigation arrows
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -313,7 +300,6 @@ fetch("movie.json")
       slides2.appendChild(element);
     });
     swiper4 = new Swiper(".swiper4", {
-      // Optional parameters
       direction: "horizontal",
       loop: true,
       slidesPerView: 3,
@@ -329,12 +315,9 @@ fetch("movie.json")
           slidesPerView: 8,
         },
       },
-      // If we need pagination
       pagination: {
         el: ".swiper-pagination",
       },
-
-      // Navigation arrows
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -464,37 +447,3 @@ function verification() {
 
 createSwiper1();
 createSwiper2();
-
-//test api
-
-// function getapi(url, options) {
-//   fetch(url)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       detailBtn.onclick = function () {
-//         const modalimgdetail = document.querySelector(
-//           ".modal-body-image-detail"
-//         );
-//         modalimgdetail.style.backgroundImage =
-//           getComputedStyle(hero).backgroundImage;
-
-//         document.querySelector("#detailModalLabel").innerHTML =
-//           mainTitle.innerHTML;
-//         document.querySelector(".movie-overview").innerHTML = data.overview;
-//         modalDetail.show();
-//       };
-//       console.log(data.overview);
-//     });
-// }
-
-// async function getapi(api_url, options) {
-//   let obj;
-//   const res = await fetch(api_url);
-//   obj = await res.json();
-//   const modalimgdetail = document.querySelector(".modal-body-image-detail");
-//   modalimgdetail.style.backgroundImage = getComputedStyle(hero).backgroundImage;
-//   document.querySelector("#detailModalLabel").innerHTML = mainTitle.innerHTML;
-//   document.querySelector(".movie-overview").innerHTML = obj.overview;
-
-//   modalDetail.show();
-// }
