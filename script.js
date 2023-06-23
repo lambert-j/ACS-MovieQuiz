@@ -26,14 +26,7 @@ const options = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Nzk2MjE4YTQ4MGUwNzViMGVjZDc5OTI1ZmU3YmM1ZCIsInN1YiI6IjY0OGMyM2YyNDJiZjAxMDBlNDlkODAzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qma1oLvBkJg2f0tN36KqR-n0p8NcJamuzRfYhHf8_rA",
   },
 };
-let api_query = "157336";
-const api_key = "8796218a480e075b0ecd79925fe7bc5d";
-const base_url = "http://api.themoviedb.org/3/";
-const url_img = "http://image.tmdb.org/t/p/";
-const lang = "&language=fr-FR";
-let api_url = function (id) {
-  return base_url + "movie/" + id + "?api_key=" + api_key + lang;
-};
+
 // base_url + "/search/movie?api_key=" + api_key + "&query=" + api_query;
 
 //https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}
@@ -118,14 +111,6 @@ function glop() {
   }, 4100);
 }
 // FIN DU LOADING SCREEN
-
-// variable JSON
-fetch("movie.json")
-  .then((res) => res.json())
-  .then((data) => {
-    maFonctionquifaittout(data);
-  });
-function maFonctionquifaittout(data) {}
 
 // NavBar
 
@@ -370,6 +355,15 @@ fetch("movie.json")
       window.open(urlYoutube, "_blank");
     });
 
+    let api_query = "";
+    const api_key = "8796218a480e075b0ecd79925fe7bc5d";
+    const base_url = "http://api.themoviedb.org/3/";
+    const url_img = "http://image.tmdb.org/t/p/";
+    const lang = "&language=fr-FR";
+    let api_url =
+      base_url + "movie/" + api_query + "?api_key=" + api_key + lang;
+    let api_urlS = base_url + "tv/" + api_query + "?api_key=" + api_key + lang;
+
     detailBtn.addEventListener("click", (e) => {
       const modalimgdetail = document.querySelector(".modal-body-image-detail");
       modalimgdetail.style.backgroundImage =
@@ -378,12 +372,41 @@ fetch("movie.json")
         mainTitle.innerHTML;
       for (let i = 0; i < data.medias.movie.length; i++) {
         if (data.medias.movie[i].title === mainTitle.innerHTML) {
-          document.querySelector(".movie-overview").innerHTML =
-            data.medias.movie[i].overview;
+          api_query = data.medias.movie[i].id;
+          api_url =
+            base_url + "movie/" + api_query + "?api_key=" + api_key + lang;
+          fetch(api_url)
+            .then((res) => res.json())
+            .then((datapi) => {
+              document.querySelector(".movie-overview").innerHTML =
+                datapi.overview;
+              document.querySelector(".movie-date").innerHTML =
+                "Date de sortie: " + datapi.release_date;
+              document.querySelector(".movie-note").innerHTML =
+                "Note: " + datapi.vote_average + "/10";
+              document.querySelector(".movie-budget").innerHTML =
+                "Budget: " + datapi.budget;
+              document.querySelector(".movie-saison").innerHTML = "";
+            });
           break;
         } else if (data.medias.serie[i].title === mainTitle.innerHTML) {
-          document.querySelector(".movie-overview").innerHTML =
-            data.medias.serie[i].overview;
+          api_query = data.medias.serie[i].id;
+          api_urlS =
+            base_url + "tv/" + api_query + "?api_key=" + api_key + lang;
+          fetch(api_urlS)
+            .then((res) => res.json())
+            .then((datapi) => {
+              document.querySelector(".movie-overview").innerHTML =
+                datapi.overview;
+              document.querySelector(".movie-date").innerHTML =
+                "Date de sortie: " + datapi.last_air_date;
+              document.querySelector(".movie-note").innerHTML =
+                "Note: " + datapi.vote_average + "/10";
+              document.querySelector(".movie-budget").innerHTML =
+                "Nombre d'épisodes: " + datapi.number_of_episodes;
+              document.querySelector(".movie-saison").innerHTML =
+                "Nombre de Saisons: " + datapi.number_of_seasons;
+            });
           break;
         }
       }
@@ -392,7 +415,6 @@ fetch("movie.json")
     });
   });
 
-let temp = null;
 function verification() {
   const inputResp = document.querySelector("#reponse");
   let imagecible = document.querySelector(".modal-body-image");
@@ -419,18 +441,11 @@ function verification() {
       inputResp.style.backgroundColor = "";
       inputResp.style.outline = "none";
       document.querySelector("body").style.pointerEvents = "";
-      target.onclick = async function () {
-        let obj;
-        const res = await fetch("./movie.json");
-        obj = await res.json();
-        for (let i = 0; i < obj.medias.movie.length; i++) {
-          if (obj.medias.movie[i].title === titreRecherche) {
-            api_query = obj.medias.movie[i].id;
-            temp = obj.medias.movie[i].id;
-            break;
-          }
-        }
-        console.log(api_query);
+      target.onclick = function (e) {
+        let targeto = e.target;
+        hero.style.backgroundImage = getComputedStyle(targeto).backgroundImage;
+        let mainId = targeto.id.replace(/-/g, " ");
+        mainTitle.innerHTML = mainId;
       };
       parent.swiper.appendSlide(target);
     }, 3000);
