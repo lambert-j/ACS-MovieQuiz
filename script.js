@@ -51,6 +51,9 @@ const verif = document
 // Animation Loading Screen
 glop();
 function glop() {
+  let body = document.getElementsByTagName("body")[0];
+  body.style.overflow = "hidden";
+  body.style.overflowY = "hidden";
   let state1 = Flip.getState(".box1");
   endbox1.appendChild(box1);
   Flip.from(state1, {
@@ -104,6 +107,8 @@ function glop() {
   }, 3500);
   setTimeout(() => {
     loading.classList.add("display-none");
+    // body.style.overflow = "auto";
+    body.style.overflowY = "auto";
   }, 4100);
 }
 // FIN DU LOADING SCREEN
