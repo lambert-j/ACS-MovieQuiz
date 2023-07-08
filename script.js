@@ -407,8 +407,20 @@ function verification() {
   const inputResp = document.querySelector("#reponse");
   let imagecible = document.querySelector(".modal-body-image");
   let targetid = imagecible.id.replace(/-/g, " ");
+  targetid = targetid.replace(/\s/g, "");
+  targetid = targetid.replace(/[éèê]/gi, "e");
+  targetid = targetid.replace(/[àâ]/gi, "a");
+  targetid = targetid.replace(/[îï]/gi, "i");
+  targetid = targetid.replace(/[ù]/gi, "u");
+  targetid = targetid.replace(/['"]/g, "");
   targetid = targetid.toLowerCase();
   let response = document.querySelector("#reponse").value;
+  response = response.replace(/\s/g, "");
+  response = response.replace(/[éèê]/gi, "e");
+  response = response.replace(/[àâ]/gi, "a");
+  response = response.replace(/[îï]/gi, "i");
+  response = response.replace(/[ù]/gi, "u");
+  response = response.replace(/['"]/g, "");
   response = response.toLowerCase();
   if (response == targetid) {
     imagecible.innerHTML = "Bravo !";

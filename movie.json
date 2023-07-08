@@ -127,6 +127,24 @@
         "id": "603692",
         "overview": "John Wick affronte ses adversaires les plus redoutables dans ce quatrième volet de la série. De New York à Osaka, en passant par Paris et Berlin, John Wick mène un combat contre la Grande Table, la terrible organisation criminelle qui a mis sa tête à prix, en affrontant ses tueurs les plus dangereux...",
         "video": "https://www.youtube.com/watch?v=3Q35BuMe1w4"
+      },
+      {
+        "title": "Mortal Kombat",
+        "picture": "/images/films/mortalkombat.jpg",
+        "id": "664767",
+        "video": "https://www.youtube.com/watch?v=WbmfiSh1d_c"
+      },
+      {
+        "title": "Fury",
+        "picture": "/images/films/fury.jpg",
+        "id": "228150",
+        "video": "https://www.youtube.com/watch?v=QyNkyMuekLc"
+      },
+      {
+        "title": "Top Gun",
+        "picture": "/images/films/topgun.jpg",
+        "id": "361743",
+        "video": "https://www.youtube.com/watch?v=RqoVqZXEpgc"
       }
     ],
     "serie": [
@@ -247,6 +265,24 @@
         "picture": "/images/serie/simpsons.jpg",
         "id": "456",
         "video": "https://www.youtube.com/watch?v=M8wctVg9zS4&pp=ygUQc2ltcHNvbnMgdHJhaWxlcg%3D%3D"
+      },
+      {
+        "title": "Flash",
+        "picture": "/images/serie/flash.jpg",
+        "id": "60735",
+        "video": "https://www.youtube.com/watch?v=D4bwNOe5SxM"
+      },
+      {
+        "title": "The Witcher",
+        "picture": "/images/serie/thewitcher.jpg",
+        "id": "71912",
+        "video": "https://www.youtube.com/watch?v=8wvpE2GCor4"
+      },
+      {
+        "title": "Vikings",
+        "picture": "/images/serie/vikings.jpg",
+        "id": "44217",
+        "video": "https://www.youtube.com/watch?v=9GgxinPwAGc"
       }
     ]
   }
